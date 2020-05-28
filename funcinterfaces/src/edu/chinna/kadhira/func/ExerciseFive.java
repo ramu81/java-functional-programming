@@ -1,6 +1,5 @@
 package edu.chinna.kadhira.func;
 
-import static java.lang.String.format;
 import static java.util.List.of;
 import static java.lang.System.out;
 import static java.util.stream.IntStream.range;
@@ -8,9 +7,11 @@ import static java.nio.file.Files.lines;
 import static java.nio.file.Paths.get;
 
 import java.util.function.Function;
-import java.io.Serializable;
+
 import java.util.List;
 import java.util.Comparator;
+import edu.chinna.kadhira.Person;
+import edu.chinna.kadhira.defaultmethods.DefaultMethods;
 
 public class ExerciseFive {
 	
@@ -30,6 +31,8 @@ public class ExerciseFive {
 			   .forEach(out::println);
 		out.println("    ");
 		usingCompareVer2();
+		new DefaultMethods().rules();
+		edu.chinna.kadhira.MethodRef.using(persons);
 	}
 	
 	public static void usingCompareVer2(){
@@ -81,18 +84,4 @@ public class ExerciseFive {
 			out.println(" build  number of times : "+count);
 		}catch(java.nio.file.InvalidPathException | java.io.IOException e){e.printStackTrace();}
 	}
-}
-
-class Person implements Serializable {
-	
-	String name;
-	Integer age;
-	
-	Person(String theName,Integer age){ this.name = theName;this.age=age;}
-	
-	Integer getAge() {return this.age;}
-	
-	String getName() {return this.name;}
-	
-	public String toString() { return format( " %s -- %d ",this.name,this.age); }
 }
